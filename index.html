@@ -2,24 +2,37 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/favicon-32x32.png" href="/favicon-32x32.png" />
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arsenal+SC:ital,wght@0,400;0,700;1,400;1,700&family=Bodoni+Moda+SC:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Roboto:wght@300;400;500&family=Russo+One&display=swap"
+      rel="stylesheet">
+     <!-- end google fonts -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hitlist demo</title>
+    <title>Job Search Tracker</title>
   </head>
   <body>
+    
     <div id="container">
-      <header>Welcome to your Job Search</header>
+      <div class="header">
+    <header>Welcome to the Hunt</header>
+    <h2>Getting a Job in Tech</h2>
+    </div>
       <br><br>
-      <form action="">
-            <input type="text" name="companyName" placeholder="company name">
-            <input type="date" name="dateAdded" placeholder="date">
-            <input type="text" name="role" id="role" placeholder="role">
-            <input type="text" name="location" placeholder="location">
-            <input type="text" name="positionType" placeholder="position type">
-            <input type="text" name="source" placeholder="url">
+      <form action="" >
+            <input type="text" class="job-items" name="companyName" placeholder="company name">
+            <input type="date" class="job-items" name="dateAdded" placeholder="date">
+            <input type="text" class="job-items" name="role" id="role" placeholder="role">
+            <input type="text" class="job-items" name="location" placeholder="location">
+            <input type="text" class="job-items" name="positionType" placeholder="position type">
+            <input type="text" class="job-items" name="source" placeholder="url">
             <input type="submit" name="" id="submit">
       </form>
+      <div class="job-list">
       <ul></ul>
+      </div>
     </div>
     
     <script type="module" src="/src/main.js"></script>
