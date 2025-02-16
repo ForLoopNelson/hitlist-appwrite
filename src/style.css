@@ -13,6 +13,43 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Test */
+
+.job-list {
+  display: grid;
+  place-self: center;
+  margin-top: 30px;
+  
+}
+.job-list ul {
+  display: grid;
+  
+  grid-template-columns: repeat(7, minmax(195px, 1fr));
+  gap: 15px;
+  list-style: none;
+  width: fit-content;
+  margin: 0 auto;
+  justify-content: center;
+}
+
+.job-list li {
+
+  padding: 10px;
+  font-family: "Roboto";
+  font-size: 1em;
+  text-align: center;
+  font-weight: 400;
+ 
+  background: rgba(83, 170, 246, .4);
+    box-shadow: 0 2px 7px 1px rgba(169, 172, 207, 0.37);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(1px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+/* Test */
+
 button {
   color: #1a1a1a;
 }
@@ -71,6 +108,7 @@ ul {
 ::placeholder {
   color:#b3b9bf;
   opacity: 1;
+  padding-left: 5px;
 }
 
 
