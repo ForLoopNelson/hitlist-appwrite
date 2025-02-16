@@ -40,13 +40,13 @@
   text-align: center;
   font-weight: 400;
   width: fit-content;
- 
-  background: rgba(2, 49, 91, 0.4);
-    box-shadow: 0 2px 7px 1px rgba(169, 172, 207, 0.37);
-    backdrop-filter: blur(2px);
-    -webkit-backdrop-filter: blur(1px);
-    border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.18);
+  background: linear-gradient(145deg, #1f1f20, #131113, #1f1f20, #131111);
+    border-top: 2px solid #362335;
+    border-left: 2px solid #301330;
+    padding: 30px 7px;
+    border-radius: 5%;
+    box-shadow: 0 1px 2px 0 rgb(249, 242, 249);
+
 }
 
 /* Test */
@@ -122,7 +122,7 @@ ul {
 
 
 .job-items {
-  border: 1px solid #53aaf6;
+  border: 2px solid #185387;
   height: 35px;
   border-radius: 7px;
 }
@@ -150,6 +150,21 @@ ul {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+.coffee-btn {
+  margin: 0 4px;
+  height: 36px;
+}
+
+.delete-btn {
+  height: 36px;
+}
+
+.notes-btn {
+  margin: 10px 6px 4px 6px;
+  height: 36px;
+
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
@@ -161,4 +176,22 @@ ul {
   #submit {
     background-color: #f9f9f9;
   }
+    .job-list li {
+      background: #3b7ab1;
+  
+    }
+
+    ::placeholder {
+      color: #131113;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color: #ffffff;
+    background: linear-gradient(170deg, #383636, #3b2828, #271a25, #050404);
+      
+  }
+
+  
 }
