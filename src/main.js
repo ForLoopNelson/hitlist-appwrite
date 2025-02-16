@@ -72,11 +72,18 @@ async function addJobsToDom(){
     addNotesBtn.textContent = 'Add/View Notes'
     addNotesBtn.onclick = () => updateChat(job.$id)
 
+    
+
     li.appendChild(coffeeBtn)
     li.appendChild(deleteBtn)
     li.appendChild(addNotesBtn)
 
     document.querySelector('ul').appendChild(li)
+
+    deleteBtn.classList.add('delete-btn');
+    coffeeBtn.classList.add('coffee-btn');
+    addNotesBtn.classList.add('notes-btn');
+
   })
 
   async function removeJob(id){
