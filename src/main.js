@@ -20,6 +20,7 @@ function addJob(e){
   e.preventDefault()
   const date = new Date() 
   const formattedDate = date.toDateString()
+  console.log(formattedDate)
 
   const job = databases.createDocument(
     DATABASE_ID,
@@ -50,7 +51,7 @@ async function addJobsToDom(){
 
   response.documents.forEach((job)=>{
     const li = document.createElement('li')
-    li.innerHTML = `${job['company-name']} | &nbsp;  ${job['date-added']} | &nbsp; ${job['role']} | &nbsp; ${job['location']} | &nbsp; ${job['position-type']} | &nbsp; ${job['source']} | &nbsp;  coffee chat?  &nbsp;${job['chat']} &nbsp; `
+    li.innerHTML = `${job['company-name']} <br>  ${job['date-added']} <br> ${job['role']} <br> ${job['location']} <br> ${job['position-type']} <br> ${job['source']} <br>  coffee chat?  <br>${job['chat']} <br> `
 
     li.id = job.$id
   
