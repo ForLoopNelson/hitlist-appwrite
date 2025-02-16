@@ -18,11 +18,9 @@ form.addEventListener('submit', addJob)
 
 function addJob(e){
   e.preventDefault()
-  const rawDate = e.target.dateAdded.value; 
-  const [year, month, day] = rawDate.split('-'); 
-  const formattedDate = `${month}/${day}/${year.slice(-2)}`;
+  const date = new Date() 
+  const formattedDate = date.toDateString()
 
-  console.log(formattedDate, typeof(formattedDate))
   const job = databases.createDocument(
     DATABASE_ID,
     COLLECTION_ID,
@@ -52,20 +50,26 @@ async function addJobsToDom(){
 
   response.documents.forEach((job)=>{
     const li = document.createElement('li')
-    li.textContent = `${job['company-name']}  |  ${job['date-added']}  | ${job['role']} | ${job['location']} | ${job['position-type']} | ${job['source']} |   coffee chat? ${job['chat']} `
+    li.innerHTML = `${job['company-name']} | &nbsp;  ${job['date-added']} | &nbsp; ${job['role']} | &nbsp; ${job['location']} | &nbsp; ${job['position-type']} | &nbsp; ${job['source']} | &nbsp;  coffee chat?  &nbsp;${job['chat']} &nbsp; `
 
     li.id = job.$id
-
+  
+    
     const deleteBtn = document.createElement('button')
-    deleteBtn.textContent = '♻'
+    deleteBtn.textContent = '💥'
     deleteBtn.onclick = () => removeJob(job.$id)
 
     const coffeeBtn = document.createElement('button')
     coffeeBtn.textContent = '☕'
     coffeeBtn.onclick = () => updateChat(job.$id)
+    
+    const addNotesBtn = document.createElement('button')
+    addNotesBtn.textContent = 'Add/View Notes'
+    addNotesBtn.onclick = () => updateChat(job.$id)
 
     li.appendChild(coffeeBtn)
     li.appendChild(deleteBtn)
+    li.appendChild(addNotesBtn)
 
     document.querySelector('ul').appendChild(li)
   })
