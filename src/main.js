@@ -18,16 +18,15 @@ form.addEventListener('submit', addJob)
 
 function addJob(e){
   e.preventDefault()
-  const date = new Date() 
-  const formattedDate = date.toDateString()
-  console.log(formattedDate)
+  const rawDate = e.target.dateAdded.value
+ 
 
   const job = databases.createDocument(
     DATABASE_ID,
     COLLECTION_ID,
     ID.unique(),
     { "company-name": e.target.companyName.value,
-      "date-added": formattedDate,
+      "date-added": rawDate,
       "role":  e.target.role.value,
       "location":  e.target.location.value,
       "position-type":  e.target.positionType.value,
@@ -35,6 +34,7 @@ function addJob(e){
      }
   );
   job.then(function (response) {
+    console.log(job)
       addJobsToDom()
   }, function (error) {
       console.log(error);
@@ -50,9 +50,13 @@ async function addJobsToDom(){
   );
 
   response.documents.forEach((job)=>{
+    let formattedDate = job['date-added']; 
+    if (formattedDate) {
+        formattedDate = new Date(formattedDate).toDateString(); // Convert ISO format
+    }
     const li = document.createElement('li')
-    li.innerHTML = `${job['company-name']} <br>  ${job['date-added']} <br> ${job['role']} <br> ${job['location']} <br> ${job['position-type']} <br> ${job['source']} <br>  coffee chat?  <br>${job['chat']} <br> `
-
+    li.innerHTML = `${job['company-name']} <br>  ${formattedDate} <br> ${job['role']} <br> ${job['location']} <br> ${job['position-type']} <br> ${job['source']} <br>  coffee chat?  <br>${job['chat']} <br> `
+  
     li.id = job.$id
   
     
