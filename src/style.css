@@ -99,6 +99,12 @@ font-size: 12px;
   
 }
 
+#job-notes {
+  width: 800px;
+  height: 400px;
+  border: 1px solid red;
+}
+
 
 
 input {
