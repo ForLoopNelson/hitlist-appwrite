@@ -72,7 +72,7 @@ async function addJobsToDom(){
     
     const addNotesBtn = document.createElement('button')
     addNotesBtn.textContent = 'Add/View Notes'
-    addNotesBtn.onclick = () => toggleText(job.$id)
+    addNotesBtn.onclick = () => toggleText()
 
     
 
@@ -87,6 +87,15 @@ async function addJobsToDom(){
     addNotesBtn.classList.add('notes-btn');
 
   })
+
+  function toggleText() {
+  const textContainer = document.getElementById('text-container');
+  if (textContainer.style.display === 'none') {
+    textContainer.style.display = 'block';
+  } else {
+    textContainer.style.display = 'none';
+  }
+}
 
   async function removeJob(id){
     const result = await databases.deleteDocument(
