@@ -1,11 +1,11 @@
 import './style.css'
 
 import { Client, Databases, ID } from 'appwrite';
-import { PROJECT_ID, DATABASE_ID, COLLECTION_ID } from './shhh.js';
+// import { PROJECT_ID, DATABASE_ID, COLLECTION_ID } from './shhh.js';
 
 
 const client = new Client();
-client.setProject(PROJECT_ID);
+client.setProject(import.meta.env.VITE_PROJECT_ID);
 
 
 const databases = new Databases(client)
@@ -22,8 +22,8 @@ function addJob(e){
  
 
   const job = databases.createDocument(
-    DATABASE_ID,
-    COLLECTION_ID,
+    import.meta.env.VITE_DATABASE_ID,
+    import.meta.env.VITE_COLLECTION_ID,
     ID.unique(),
     { "company-name": e.target.companyName.value,
       "date-added": rawDate,
@@ -45,8 +45,8 @@ function addJob(e){
 async function addJobsToDom(){
     document.querySelector('ul').innerHTML = ""
     let response = await databases.listDocuments(
-      DATABASE_ID,
-      COLLECTION_ID
+      import.meta.env.VITE_DATABASE_ID,
+      import.meta.env.VITE_COLLECTION_ID
   );
 
   response.documents.forEach((job)=>{
@@ -99,8 +99,8 @@ async function addJobsToDom(){
 
   async function removeJob(id){
     const result = await databases.deleteDocument(
-      DATABASE_ID, // databaseId
-      COLLECTION_ID, // collectionId
+      import.meta.env.VITE_DATABASE_ID, // databaseId
+      import.meta.env.VITE_COLLECTION_ID, // collectionId
       id // documentId
     );
     document.getElementById(id).remove()
@@ -108,8 +108,8 @@ async function addJobsToDom(){
   }
   async function updateChat(id){
     const result = databases.updateDocument(
-      DATABASE_ID, // databaseId
-      COLLECTION_ID, // collectionId
+      import.meta.env.VITE_DATABASE_ID, // databaseId
+      import.meta.env.VITE_COLLECTION_ID, // collectionId
       id, // documentId
       {'chat': true} // data (optional)
         // permissions (optional)
