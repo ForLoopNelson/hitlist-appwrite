@@ -54,9 +54,11 @@ async function addJobsToDom(){
     if (formattedDate) {
         formattedDate = new Date(formattedDate).toDateString(); // Convert ISO format
     }
-    const li = document.createElement('li')
-    li.innerHTML = `${job['company-name']} <br>  ${formattedDate} <br> ${job['role']} <br> ${job['location']} <br> ${job['position-type']} <br> ${job['source']} <br>  coffee chat?  <br>${job['chat']} <br> `
-  
+    const li = document.createElement('li') 
+
+    li.innerHTML = `<span id="company-name">${job['company-name']}</span> <br> <span id="date-added"> ${formattedDate} </span> <br>  <span id="role">${job['role']}</span> <br> <span id="location">${job['location']} </span> <br> <span id="position-type"> ${job['position-type']} </span> <br> <a href id="url"> ${job['source']} </a> <br>  coffee chat?  <br>${job['chat']} <br> `
+    
+    li.classList.add('job-details')
     li.id = job.$id
   
     
@@ -70,7 +72,7 @@ async function addJobsToDom(){
     
     const addNotesBtn = document.createElement('button')
     addNotesBtn.textContent = 'Add/View Notes'
-    addNotesBtn.onclick = () => updateChat(job.$id)
+    addNotesBtn.onclick = () => toggleText(job.$id)
 
     
 
