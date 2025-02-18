@@ -312,4 +312,8 @@ ul {
     #noteForm {
       width: 20%;
     }
+
+    #url {
+      font-size: 12px;
+    }
 }
