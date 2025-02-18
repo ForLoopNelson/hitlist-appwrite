@@ -116,19 +116,19 @@ async function addJobsToDom(){
   }
   async function updateChat(id){
     const result = databases.updateDocument(
-      import.meta.env.VITE_DATABASE_ID, // databaseId
-      import.meta.env.VITE_COLLECTION_ID, // collectionId
-      id, // documentId
-      {'chat': true} // data (optional)
+      import.meta.env.VITE_DATABASE_ID, 
+      import.meta.env.VITE_COLLECTION_ID,
+      id, 
+      {'chat': true} 
         // permissions (optional)
     );
     result.then(function(){location.reload()})
   }
 
 async function saveNote(e) {
-  e.preventDefault(); // Prevent default form behavior
+  e.preventDefault(); 
 
-  const noteText = document.getElementById("job-notes").value; // Get textarea value
+  const noteText = document.getElementById("job-notes").value; 
 
   if (!noteText.trim()) {
     alert("Please enter a note before saving.");
@@ -138,10 +138,10 @@ async function saveNote(e) {
   try {
     const note = await databases.createDocument(
       import.meta.env.VITE_DATABASE_ID,
-      import.meta.env.VITE_NOTES_COLLECTION_ID, // Saving to notes collection
+      import.meta.env.VITE_NOTES_COLLECTION_ID, 
       ID.unique(),
       {
-        "job-notes": noteText, // Save the note
+        "job-notes": noteText, 
         
       }
     );
