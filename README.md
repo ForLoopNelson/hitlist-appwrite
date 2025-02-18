@@ -9,8 +9,6 @@
 ---
 
 # Things to add
-
-- Create a `.env` file in root folder and add the following as `key = value`
  
   - PROJECT_ID = `your appwrite project id`
   - DATABASE_ID = `your appwrite database id`
