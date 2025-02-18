@@ -23,7 +23,8 @@ function addJob(e){
 
   const job = databases.createDocument(
     import.meta.env.VITE_DATABASE_ID,
-    import.meta.env.VITE_COLLECTION_ID,
+    import.meta.env.VITE_COLLECTION_ID, 
+   
     ID.unique(),
     { "company-name": e.target.companyName.value,
       "date-added": rawDate,
@@ -32,6 +33,8 @@ function addJob(e){
       "position-type":  e.target.positionType.value,
       "source":  e.target.source.value
      }
+     
+    
   );
   job.then(function (response) {
     console.log(job)
@@ -54,6 +57,10 @@ async function addJobsToDom(){
     if (formattedDate) {
         formattedDate = new Date(formattedDate).toDateString(); // Convert ISO format
     }
+
+    const noteTextarea = document.getElementById("job-notes");
+    noteTextarea.setAttribute("data-job-id", job.$id); 
+
     const li = document.createElement('li') 
 
     li.innerHTML = `<span id="company-name">${job['company-name']}</span> <br> <span id="date-added"> ${formattedDate} </span> <br>  <span id="role">${job['role']}</span> <br> <span id="location">${job['location']} </span> <br> <span id="position-type"> ${job['position-type']} </span> <br> <a href id="url"> ${job['source']} </a> <br>  coffee chat?  <br>${job['chat']} <br> `
@@ -102,6 +109,7 @@ async function addJobsToDom(){
       import.meta.env.VITE_DATABASE_ID, // databaseId
       import.meta.env.VITE_COLLECTION_ID, // collectionId
       id // documentId
+      
     );
     document.getElementById(id).remove()
   
@@ -117,6 +125,38 @@ async function addJobsToDom(){
     result.then(function(){location.reload()})
   }
 
+async function saveNote(e) {
+  e.preventDefault(); // Prevent default form behavior
+
+  const noteText = document.getElementById("job-notes").value; // Get textarea value
+
+  if (!noteText.trim()) {
+    alert("Please enter a note before saving.");
+    return;
+  }
+
+  try {
+    const note = await databases.createDocument(
+      import.meta.env.VITE_DATABASE_ID,
+      import.meta.env.VITE_NOTES_COLLECTION_ID, // Saving to notes collection
+      ID.unique(),
+      {
+        "job-notes": noteText, // Save the note
+        
+      }
+    );
+
+    console.log("Note saved:", note);
+    document.getElementById("job-notes").value = noteText; 
+    document.getElementById("text-container").style.display = "none"
+  } catch (error) {
+    console.error("Error saving note:", error);
+   
+  }
+  
+}
+document.getElementById("saveNoteButton").addEventListener("click", saveNote);
 
 }
+
 addJobsToDom()
