@@ -1,6 +1,6 @@
 # About
 
-`A full stack app to upload audio pertaining to Horror Movie Sound Design using Cloudinary, MongoDB, express`
+`A way to add and track open job positions that you are interested in during your job hunt. Uses Appwrite for the backend.`
 
 # Install
 
