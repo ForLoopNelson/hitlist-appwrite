@@ -1,0 +1,1 @@
+todo: get notes working so user can add notes about each job posting and add images and links 
